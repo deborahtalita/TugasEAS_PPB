@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_2"
+    tools:context=".activities.LoginActivity">
+
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="30dp"
+        android:textColor="@color/light_orange"
+        android:text="Login" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="Username"
+            android:textColor="@color/black"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/editUsername"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/input_box"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Password"
+                android:textColor="@color/black"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tvForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="165dp"
+                android:fontFamily="@font/nunito_semibold"
+                android:layout_toRightOf="@+id/tvPassword"
+                android:text="Forgot Password?"
+                android:textColor="@color/grey_2"
+                android:textSize="13dp" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/input_box"
+            android:ems="10"
+            android:textColor="@color/black"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/LoginBtn"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/yellow_box"
+            android:elevation="4dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="@color/white_2"
+            android:textSize="20sp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp"
+            tools:ignore="TextContrastCheck" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="50dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvAlrHaveAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Doesn’t have any accounts yet?"
+                android:textColor="@color/grey_2"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tvChooseRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:layout_toRightOf="@+id/tvAlrHaveAccount"
+                android:paddingLeft="16dp"
+                android:text="Register"
+                android:textColor="@color/blue"
+                android:textSize="13dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
