@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EAS_PPB">
         <activity
-            android:name=".MenuDetailActivity"
+            android:name=".activities.MenuDetailActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:exported="false"></activity>
     </application>
 

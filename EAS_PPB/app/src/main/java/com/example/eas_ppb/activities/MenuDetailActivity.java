@@ -1,4 +1,4 @@
-package com.example.eas_ppb;
+package com.example.eas_ppb.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,12 +6,17 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.eas_ppb.api.response.GetAMenuResponse;
+import com.example.eas_ppb.model.Menu;
+import com.example.eas_ppb.R;
+import com.example.eas_ppb.api.RestClient;
 
 import java.util.ArrayList;
 
@@ -45,6 +50,20 @@ public class MenuDetailActivity extends AppCompatActivity {
         } else {
             getMenuFromParcelable();
         }
+
+        backMenuDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        favoriteMenuDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     private void getMenuFromParcelable() {

@@ -1,4 +1,7 @@
-package com.example.eas_ppb;
+package com.example.eas_ppb.api;
+
+import com.example.eas_ppb.api.response.GetAMenuResponse;
+import com.example.eas_ppb.api.response.GetAllMenuResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -28,7 +28,7 @@
         android:layout_marginHorizontal="30dp"
         android:focusable="true"
         android:textAlignment="viewStart"
-        android:background="@drawable/bg_searchview"
+        android:background="@drawable/bg_rounded_white"
         app:queryHint="Search Here ..."
         app:iconifiedByDefault="false"
         app:queryBackground="@android:color/transparent"/>

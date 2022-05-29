@@ -1,8 +1,10 @@
-package com.example.eas_ppb;
+package com.example.eas_ppb.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.eas_ppb.R;
 
 public class SplashActivity extends AppCompatActivity {
 

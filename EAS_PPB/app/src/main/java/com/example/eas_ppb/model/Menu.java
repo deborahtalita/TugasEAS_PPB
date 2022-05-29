@@ -1,4 +1,4 @@
-package com.example.eas_ppb;
+package com.example.eas_ppb.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
