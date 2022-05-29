@@ -22,7 +22,7 @@
             app:srcCompat="@drawable/logo" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/LoginBtn"
+            android:id="@+id/cLoginBtn"
             android:layout_width="300dp"
             android:layout_height="55dp"
             android:layout_gravity="center"
@@ -37,7 +37,7 @@
             tools:ignore="TextContrastCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/RegisterBtn"
+            android:id="@+id/cRegisterBtn"
             android:layout_width="300dp"
             android:layout_height="55dp"
             android:layout_gravity="center"
