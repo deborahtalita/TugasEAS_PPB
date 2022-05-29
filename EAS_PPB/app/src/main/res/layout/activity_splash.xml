@@ -2,58 +2,26 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splashscreen"
     android:orientation="vertical"
     tools:context=".activities.SplashActivity">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/splashscreen_background"
+        android:scaleType="centerCrop"/>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="150dp"
-            app:srcCompat="@drawable/logo" />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cLoginBtn"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="220dp"
-            android:background="@drawable/white_box"
-            android:elevation="4dp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Login"
-            android:textAllCaps="false"
-            android:textColor="@color/light_orange"
-            android:textSize="20sp"
-            tools:ignore="TextContrastCheck" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cRegisterBtn"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/yellow_box"
-            android:elevation="4dp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Register"
-            android:textAllCaps="false"
-            android:textColor="@color/white_2"
-            android:textSize="20sp"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp"
-            tools:ignore="TextContrastCheck" />
-
-
-    </LinearLayout>
+        <include layout="@layout/fragment_authorization_bottom_sheet"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,13 +26,13 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
 
-//    private SharedPreferences sharedPreferencesLoginStatus;
+    private SharedPreferences sharedPreferencesLoginStatus;
     EditText edtUsername, edtPassword;
     Button btnLogin;
     TextView tvRegister;
 
-//    public static final String SHARED_LOGIN_STATUS = "SharedLoginStatus";
-//    public static final String TEXT = "FALSE";
+    public static final String SHARED_LOGIN_STATUS = "SharedLoginStatus";
+    public static final String TEXT = "FALSE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
