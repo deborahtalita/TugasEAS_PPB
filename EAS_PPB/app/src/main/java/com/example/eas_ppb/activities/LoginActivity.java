@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eas_ppb.MainActivity;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText edtUsername, edtPassword;
     Button btnLogin;
+    TextView tvRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +37,20 @@ public class LoginActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.editUsername);
         edtPassword = findViewById(R.id.editPassword);
         btnLogin = findViewById(R.id.LoginBtn);
+        tvRegister = findViewById(R.id.tvChooseRegister);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 postLogin();
+            }
+        });
+
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(in);
             }
         });
     }

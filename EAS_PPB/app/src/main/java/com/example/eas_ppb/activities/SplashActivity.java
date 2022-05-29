@@ -30,10 +30,14 @@ public class SplashActivity extends AppCompatActivity {
                     case R.id.cLoginBtn:
                         in = new Intent(SplashActivity.this, LoginActivity.class);
                         break;
+                    case R.id.cRegisterBtn:
+                        in = new Intent(SplashActivity.this, RegisterActivity.class);
+                        break;
                 }
                 startActivity(in);
             }
         };
         loginBtn.setOnClickListener(onButtonClickListener);
+        registerBtn.setOnClickListener(onButtonClickListener);
     }
 }
