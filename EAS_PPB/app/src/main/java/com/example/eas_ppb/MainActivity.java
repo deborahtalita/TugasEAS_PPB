@@ -3,9 +3,13 @@ package com.example.eas_ppb;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.eas_ppb.model.Menu;
 import com.example.eas_ppb.activities.MenuDetailActivity;
@@ -29,6 +33,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swiperefreshlayout_main);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if(InternetChecker.isInternetConnected(MainActivity.this)) {
+                    Intent refresh = new Intent(MainActivity.this, MainActivity.class);
+
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(refresh);
+                    overridePendingTransition(0, 0);
+                } else {
+                    Toast.makeText(getApplicationContext(),"Check Your Connection or Try Again Later",Toast.LENGTH_LONG).show();
+                }
+
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
         menuList = findViewById(R.id.recyclerview_MenuList);
 
         Call<GetAllMenuResponse> call = RestClient.getService().getAllMenu();
@@ -36,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetAllMenuResponse> call, Response<GetAllMenuResponse> response) {
                 if(!response.isSuccessful()) {
-                    //toast
+                    Toast.makeText(getApplicationContext(),"CODE: "+response.code()+" "+response.errorBody(),Toast.LENGTH_LONG).show();
                     return;
                 }
                 menus = response.body().getResult();
@@ -45,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GetAllMenuResponse> call, Throwable t) {
-                //toast
+                Toast.makeText(getApplicationContext(),"Something Went Wrong. Try Again Later!",Toast.LENGTH_LONG).show();
             }
         });
     }
