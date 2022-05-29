@@ -15,7 +15,7 @@ import com.example.eas_ppb.MainActivity;
 import com.example.eas_ppb.R;
 import com.example.eas_ppb.api.RestClient;
 import com.example.eas_ppb.api.request.BodyLogin;
-import com.example.eas_ppb.api.responses.LoginResponse;
+import com.example.eas_ppb.api.response.LoginResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

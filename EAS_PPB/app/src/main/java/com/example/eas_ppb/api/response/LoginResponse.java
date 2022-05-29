@@ -1,4 +1,4 @@
-package com.example.eas_ppb.api.responses;
+package com.example.eas_ppb.api.response;
 
 import com.google.gson.annotations.SerializedName;
 
