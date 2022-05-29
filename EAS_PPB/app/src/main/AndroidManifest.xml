@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,11 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EAS_PPB">
         <activity
-
-            android:name=".activities.MenuDetailActivity"
+            android:name=".activities.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MenuDetailActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -31,9 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.SplashActivity"
-            android:exported="false"></activity>
     </application>
 
 </manifest>
