@@ -1,27 +1,23 @@
 package com.example.eas_ppb.api;
 
+import com.example.eas_ppb.api.JsonPlaceHolderApi;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
-    private static APIInterface service;
-    private static Retrofit retrofit;
 
-    public static APIInterface getService() {
+    private static JsonPlaceHolderApi service;
 
-        if (service == null) {
-            // Membuat base URL
-            String BASE_URL = "https://foodbukka.herokuapp.com/";
-
-            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-            Retrofit.Builder builder = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create());
-
-            Retrofit retrofit = builder.client(httpClient.build()).build();
-
-            service = retrofit.create(APIInterface.class);
+    public static JsonPlaceHolderApi getService() {
+        if(service == null) {
+            OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://foodbukka.herokuapp.com/api/v1/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(okHttpClient)
+                    .build();
+            service = retrofit.create(JsonPlaceHolderApi.class);
         }
         return service;
     }
