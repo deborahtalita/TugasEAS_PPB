@@ -62,6 +62,7 @@ public class Menu implements Parcelable {
 		this.menuname = in.readString();
 		this.description = in.readString();
 		this.V = in.readInt();
+		this.isFavorite = in.readByte() != 0;
 	}
 
 	public String getId(){
@@ -119,6 +120,7 @@ public class Menu implements Parcelable {
 		dest.writeString(menuname);
 		dest.writeString(description);
 		dest.writeInt(V);
+		dest.writeByte((byte) (isFavorite ? 1 : 0));
 	}
 
 	@Override

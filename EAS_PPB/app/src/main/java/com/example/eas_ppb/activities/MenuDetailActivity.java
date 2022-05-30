@@ -40,9 +40,9 @@ import retrofit2.Callback;
 import retrofit2.Call;
 
 public class MenuDetailActivity extends AppCompatActivity {
-    private static final int NEW_FAV_LIST_REQUEST_CODE = 1;
+
     TextView menuNameDetail, menuDescriptionDetail;
-    ImageButton backMenuDetail, favoriteMenuDetail;
+    ImageButton backMenuDetail;
     ImageSlider menuImageDetail;
     Menu menuIntent;
     FavoritesViewModel mFavViewModel;
@@ -56,7 +56,6 @@ public class MenuDetailActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         backMenuDetail = findViewById(R.id.imagebutton_BackMenuDetail);
-        //favoriteMenuDetail = findViewById(R.id.imagebutton_FavoriteMenuDetail);
         menuImageDetail = findViewById(R.id.imageslider_MenuImageDetail);
         menuNameDetail = findViewById(R.id.textview_MenuNameDetail);
         menuDescriptionDetail = findViewById(R.id.textview_MenuDescriptionDetail);
@@ -72,9 +71,11 @@ public class MenuDetailActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-//                    menuIntent.setFavorite(true);
-//                    Intent in = new Intent(MenuDetailActivity.this, FavoritesActivity.class);
-//                    startActivityForResult(in,1);
+                    menuIntent.setFavorite(true);
+                    mFavViewModel.insert(menuIntent);
+                    Intent in = new Intent(MenuDetailActivity.this, FavoritesActivity.class);
+                    startActivity(in);
+                    Toast.makeText(MenuDetailActivity.this,  "masuk", Toast.LENGTH_SHORT).show();
                     toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_favorite_true));
                 }
                 else {
@@ -82,30 +83,6 @@ public class MenuDetailActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        toggleButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(check == true){
-//                    if(toggleButton.isChecked()){
-//                        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_favorite_true));
-//                    }
-//                } else if (check){
-//                    if(toggleButton.isChecked()){
-//                        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite_false));
-//                    }
-//                }
-//            }
-//        });
-
-//        if(menuIntent.isFavorite()){
-//            favoriteMenuDetail.setBackgroundResource(R.drawable.ic_favorite_false);
-//        } else {
-//            favoriteMenuDetail.setBackgroundResource(R.drawable.ic_favorite_true);
-//        }
-
-
-        menuIntent = getIntent().getParcelableExtra("MENU_DETAILS");
 
         if(InternetChecker.isInternetConnected(this)) {
             getMenuFromAPI();
@@ -119,35 +96,6 @@ public class MenuDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-//        favoriteMenuDetail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-////                check = true;
-////                favoriteMenuDetail.isPressed();
-//                mFavViewModel.insert(menuIntent);
-//                Toast.makeText(MenuDetailActivity.this,  "masuk", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        if(check == true){
-//            favoriteMenuDetail.setBackgroundResource(R.drawable.ic_favorite_true);
-//        }
-    }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == NEW_FAV_LIST_REQUEST_CODE && resultCode == -1) {
-            Menu menuFav = data.getParcelableExtra("MENU_DETAILS");
-            menuFav.setFavorite(true);
-            mFavViewModel.insert(menuFav);
-        } else {
-            Toast.makeText(
-                    getApplicationContext(),
-                    R.string.empty_not_saved,
-                    Toast.LENGTH_LONG).show();
-        }
     }
 
     private void getMenuFromParcelable() {
