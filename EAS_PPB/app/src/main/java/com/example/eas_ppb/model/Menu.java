@@ -24,22 +24,22 @@ public class Menu implements Parcelable {
 	@ColumnInfo(name = "menu_images")
 	@NonNull
 	@SerializedName("images")
-	final private List<String> images;
+	private List<String> images;
 
 	@ColumnInfo(name = "menu_name")
 	@NonNull
 	@SerializedName("menuname")
-	final private String menuname;
+	private String menuname;
 
 	@ColumnInfo(name = "menu_description")
 	@NonNull
 	@SerializedName("description")
-	final private String description;
+	private String description;
 
 	@ColumnInfo(name = "menu_v")
 	@NonNull
 	@SerializedName("__v")
-	final private int V;
+	private int V;
 
 	public Menu(@NonNull List<String> images, @NonNull String menuname, @NonNull String description, int v) {
 		this.images = images;
