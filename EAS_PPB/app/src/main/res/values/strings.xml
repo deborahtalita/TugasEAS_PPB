@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EAS_PPB</string>
+    <string name="empty_not_saved" />
 </resources>
