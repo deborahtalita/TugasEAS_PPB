@@ -39,13 +39,13 @@ public class FavoritesActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         //menuFav = getIntent().getParcelableExtra("MENU_FAV");
-        Intent in = new Intent();
-        Menu menu = in.getParcelableExtra("MENU_DETAIL");
-
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("MENU_DETAIL", menu);
-        setResult(Activity.RESULT_OK, returnIntent);
-        finish();
+//        Intent in = new Intent();
+//        Menu menu = in.getParcelableExtra("MENU_DETAIL");
+//
+//        Intent returnIntent = new Intent();
+//        returnIntent.putExtra("MENU_DETAIL", menu);
+//        setResult(Activity.RESULT_OK, returnIntent);
+//        finish();
 
         List<String> images = new ArrayList<String>();
         images.add("https://res.cloudinary.com/jobizil/image/upload/v1602768183/images/menus/x4cspjvzqn2qk76sjhiw.jpg");

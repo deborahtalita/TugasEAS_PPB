@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,16 +15,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.eas_ppb.model.Menu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
     private Context context;
-    private List<Menu> menus;
+    private List<Menu> menus, filteredMenus;
     private OnItemClickListener onItemClickListener;
 
     public Adapter(Context context, List<Menu> menus) {
         this.context = context;
         this.menus = menus;
+        this.filteredMenus = menus;
     }
 
     @NonNull
@@ -86,5 +90,4 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
-
 }

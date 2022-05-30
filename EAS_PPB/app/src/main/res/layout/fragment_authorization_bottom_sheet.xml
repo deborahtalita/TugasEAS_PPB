@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/bottom_sheet_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.AuthorizationBottomSheet">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cLoginBtn"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="119dp"
+        android:background="@drawable/white_box"
+        android:elevation="4dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/light_orange"
+        android:textSize="20sp"
+        tools:ignore="TextContrastCheck" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cRegisterBtn"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="115dp"
+        android:background="@drawable/yellow_box"
+        android:elevation="4dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:textColor="@color/white_2"
+        android:textSize="20sp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"
+        tools:ignore="TextContrastCheck" />
+
+</LinearLayout>

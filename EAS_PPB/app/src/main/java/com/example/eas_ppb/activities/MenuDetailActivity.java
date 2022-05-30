@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.room.Database;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -16,28 +15,35 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
-import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.eas_ppb.FavoritesRoomDatabase;
 import com.example.eas_ppb.FavoritesViewModel;
+import com.example.eas_ppb.InternetChecker;
 import com.example.eas_ppb.api.response.GetAMenuResponse;
+import com.example.eas_ppb.api.RestClient;
 import com.example.eas_ppb.model.Menu;
 import com.example.eas_ppb.R;
-import com.example.eas_ppb.api.RestClient;
-
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Callback;
+import retrofit2.Call;
 
 public class MenuDetailActivity extends AppCompatActivity {
     private static final int NEW_FAV_LIST_REQUEST_CODE = 1;
     TextView menuNameDetail, menuDescriptionDetail;
-    ImageSlider menuImageDetail;
     ImageButton backMenuDetail, favoriteMenuDetail;
+    ImageSlider menuImageDetail;
     Menu menuIntent;
     FavoritesViewModel mFavViewModel;
     boolean check = false;
@@ -49,6 +55,8 @@ public class MenuDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_detail);
         getSupportActionBar().hide();
 
+        backMenuDetail = findViewById(R.id.imagebutton_BackMenuDetail);
+        //favoriteMenuDetail = findViewById(R.id.imagebutton_FavoriteMenuDetail);
         menuImageDetail = findViewById(R.id.imageslider_MenuImageDetail);
         menuNameDetail = findViewById(R.id.textview_MenuNameDetail);
         menuDescriptionDetail = findViewById(R.id.textview_MenuDescriptionDetail);
@@ -96,8 +104,10 @@ public class MenuDetailActivity extends AppCompatActivity {
 //            favoriteMenuDetail.setBackgroundResource(R.drawable.ic_favorite_true);
 //        }
 
-        //CEK KONEKSI INTERNET
-        if(isInternetConnected()) {
+
+        menuIntent = getIntent().getParcelableExtra("MENU_DETAILS");
+
+        if(InternetChecker.isInternetConnected(this)) {
             getMenuFromAPI();
         } else {
             getMenuFromParcelable();
@@ -153,6 +163,7 @@ public class MenuDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetAMenuResponse> call, Response<GetAMenuResponse> response) {
                 if(!response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(),"CODE: "+response.code()+" "+response.errorBody(),Toast.LENGTH_LONG).show();
                     return;
                 }
                 Menu menu = response.body().getMenu();
@@ -161,23 +172,9 @@ public class MenuDetailActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GetAMenuResponse> call, Throwable t) {
-
+                Toast.makeText(getApplicationContext(),"Something Went Wrong. Try Again Later!",Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    private boolean isInternetConnected() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-
-        if(networkInfo != null) {
-            if(networkInfo.isConnected()) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
     }
 
     private void buildUI(Menu menu) {
