@@ -10,6 +10,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
+
+import com.example.eas_ppb.activities.FavoritesActivity;
 import android.widget.Toast;
 
 import com.example.eas_ppb.api.JsonPlaceHolderApi;
@@ -26,6 +32,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ImageButton imagebutton_PopupMenu;
     private androidx.appcompat.widget.SearchView searchMenu;
     private SwipeRefreshLayout swipeRefreshLayout;
     private MenuViewModel viewModel;
@@ -42,6 +50,29 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.swiperefreshlayout_main);
         searchMenu = findViewById(R.id.searchview_SearchMenu);
         menuList = findViewById(R.id.recyclerview_MenuList);
+        imagebutton_PopupMenu = findViewById(R.id.imagebuttonPopupMenu);
+        imagebutton_PopupMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
+                popupMenu.getMenuInflater().inflate(R.menu.more_option, popupMenu.getMenu());
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.favoritesMenu:
+                                Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
+                                startActivity(intent);
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+                popupMenu.show();
+            }
+        });
 
         menus = new ArrayList<>();
         setupSwipeRefresh();
