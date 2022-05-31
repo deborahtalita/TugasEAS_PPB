@@ -3,7 +3,6 @@ package com.example.eas_ppb.api.request;
 import com.google.gson.annotations.SerializedName;
 
 public class BodyRegister{
-
 	@SerializedName("password")
 	private String password;
 

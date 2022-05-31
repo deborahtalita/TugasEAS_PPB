@@ -7,14 +7,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.example.eas_ppb.Adapter;
-import com.example.eas_ppb.FavoritesListAdapter;
-import com.example.eas_ppb.FavoritesViewModel;
-import com.example.eas_ppb.MainActivity;
+import com.example.eas_ppb.adapter.Adapter;
+import com.example.eas_ppb.viewmodel.FavoritesViewModel;
 import com.example.eas_ppb.R;
 import com.example.eas_ppb.model.Menu;
 
@@ -53,5 +50,14 @@ public class FavoritesActivity extends AppCompatActivity {
         menuList.setLayoutManager(linearLayoutManager);
         menuList.setHasFixedSize(true);
         menuList.setAdapter(favAdapter);
+
+        favAdapter.setOnItemClickListener(new Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Menu menu) {
+                Intent intent = new Intent(FavoritesActivity.this, MenuDetailActivity.class);
+                intent.putExtra("MENU_DETAILS", menu);
+                startActivity(intent);
+            }
+        });
     }
 }

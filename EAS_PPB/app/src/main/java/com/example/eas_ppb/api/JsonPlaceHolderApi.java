@@ -4,7 +4,7 @@ import com.example.eas_ppb.api.request.BodyLogin;
 import com.example.eas_ppb.api.request.BodyRegister;
 import com.example.eas_ppb.api.response.GetAMenuResponse;
 import com.example.eas_ppb.api.response.GetAllMenuResponse;
-import com.example.eas_ppb.api.response.LoginResponse;
+import com.example.eas_ppb.api.response.UserResponse;
 import com.example.eas_ppb.model.Menu;
 
 import java.util.List;
@@ -19,10 +19,10 @@ import retrofit2.http.Query;
 public interface JsonPlaceHolderApi {
 
     @POST("auth/login")
-    Call<LoginResponse> postLogin(@Body BodyLogin bodyLogin);
+    Call<UserResponse> postLogin(@Body BodyLogin bodyLogin);
 
     @POST("auth/register")
-    Call<LoginResponse> postRegister(@Body BodyRegister bodyRegister);
+    Call<UserResponse> postRegister(@Body BodyRegister bodyRegister);
 
     @GET("menu")
     Call<GetAllMenuResponse> getAllMenu();

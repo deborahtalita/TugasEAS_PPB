@@ -1,4 +1,4 @@
-package com.example.eas_ppb;
+package com.example.eas_ppb.repository;
 
 import android.app.Application;
 

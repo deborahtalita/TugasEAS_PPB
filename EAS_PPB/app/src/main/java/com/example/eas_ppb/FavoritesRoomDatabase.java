@@ -24,10 +24,10 @@ public abstract class FavoritesRoomDatabase extends RoomDatabase {
 
     private static volatile FavoritesRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor =
+    public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static FavoritesRoomDatabase getDatabase(final Context context) {
+    public static FavoritesRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (FavoritesRoomDatabase.class) {
                 if (INSTANCE == null) {

@@ -3,32 +3,21 @@ package com.example.eas_ppb.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.room.Database;
-import android.content.Context;
+
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.eas_ppb.FavoritesRoomDatabase;
-import com.example.eas_ppb.FavoritesViewModel;
+import com.example.eas_ppb.viewmodel.FavoritesViewModel;
 import com.example.eas_ppb.InternetChecker;
 import com.example.eas_ppb.api.response.GetAMenuResponse;
 import com.example.eas_ppb.api.RestClient;
@@ -46,7 +35,6 @@ public class MenuDetailActivity extends AppCompatActivity {
     ImageSlider menuImageDetail;
     Menu menuIntent;
     FavoritesViewModel mFavViewModel;
-    boolean check = false;
     ToggleButton toggleButton;
 
     @Override
@@ -66,6 +54,7 @@ public class MenuDetailActivity extends AppCompatActivity {
 
         toggleButton = (ToggleButton) findViewById(R.id.myToggleButton);
         toggleButton.setChecked(false);
+
         toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite_false));
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -75,7 +64,7 @@ public class MenuDetailActivity extends AppCompatActivity {
                     mFavViewModel.insert(menuIntent);
                     Intent in = new Intent(MenuDetailActivity.this, FavoritesActivity.class);
                     startActivity(in);
-                    Toast.makeText(MenuDetailActivity.this,  "masuk", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MenuDetailActivity.this,  "Added to Favorites!", Toast.LENGTH_SHORT).show();
                     toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_favorite_true));
                 }
                 else {

@@ -2,7 +2,6 @@ package com.example.eas_ppb.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,7 +16,7 @@ import com.example.eas_ppb.MainActivity;
 import com.example.eas_ppb.R;
 import com.example.eas_ppb.api.RestClient;
 import com.example.eas_ppb.api.request.BodyLogin;
-import com.example.eas_ppb.api.response.LoginResponse;
+import com.example.eas_ppb.api.response.UserResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -68,22 +67,23 @@ public class LoginActivity extends AppCompatActivity {
         bodyLogin.setUsername(edtUsername.getText().toString());
         bodyLogin.setPassword(edtPassword.getText().toString());
 
-        RestClient.getService().postLogin(bodyLogin).enqueue(new Callback<LoginResponse>() {
+        RestClient.getService().postLogin(bodyLogin).enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()){
                     // Status code : 200
                     Log.i("Response", response.message());
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 } else {
-                    Toast.makeText(LoginActivity.this,  "Please provide a valid username and password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            LoginActivity.this,
+                            "Please provide a valid username and password", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-
+            public void onFailure(Call<UserResponse> call, Throwable t) {
             }
         });
     }

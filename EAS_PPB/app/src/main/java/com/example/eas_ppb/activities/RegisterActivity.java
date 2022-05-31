@@ -15,7 +15,7 @@ import com.example.eas_ppb.MainActivity;
 import com.example.eas_ppb.R;
 import com.example.eas_ppb.api.RestClient;
 import com.example.eas_ppb.api.request.BodyRegister;
-import com.example.eas_ppb.api.response.LoginResponse;
+import com.example.eas_ppb.api.response.UserResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,10 +61,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean isPasswordValid(){
         String pass1 = edtPassword.getText().toString();
-        String pass2 = edtPassword.getText().toString();
+        String pass2 = edtConfirmPassword.getText().toString();
 
         if(pass1.length() >= 6){
-            if(pass1.equals(pass2)){
+            if(pass1.equals(pass2) == true){
                 return true;
             } else {
                 Toast.makeText(RegisterActivity.this,  "Password is not matched!", Toast.LENGTH_SHORT).show();
@@ -83,22 +83,22 @@ public class RegisterActivity extends AppCompatActivity {
         bodyRegister.setPhoneNumber(edtPhoneNumber.getText().toString());
         bodyRegister.setPassword(edtPassword.getText().toString());
 
-        RestClient.getService().postRegister(bodyRegister).enqueue(new Callback<LoginResponse>() {
+        RestClient.getService().postRegister(bodyRegister).enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if(response.isSuccessful()){
                     // Status code : 200
                     Log.i("Response", response.message());
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 } else {
-                    Toast.makeText(RegisterActivity.this,  "Sorry, either username/email has already exists", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this,
+                            "Sorry, either username/email has already exists", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-
+            public void onFailure(Call<UserResponse> call, Throwable t) {
             }
         });
     }

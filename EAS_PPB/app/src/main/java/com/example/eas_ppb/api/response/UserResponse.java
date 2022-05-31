@@ -2,8 +2,7 @@ package com.example.eas_ppb.api.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LoginResponse {
-
+public class UserResponse {
 	@SerializedName("status")
 	private String status;
 
