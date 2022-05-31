@@ -29,7 +29,7 @@
             android:layout_marginStart="10dp"
             android:layout_gravity="top|left"
             android:background="@null"
-            android:src="@drawable/ic_left_arrow"/>
+            android:src="@drawable/ic_left_arrow_white"/>
 
         <ToggleButton
             android:layout_width="38dp"

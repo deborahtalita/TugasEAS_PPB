@@ -14,5 +14,11 @@
     <color name="grey">#DADED9</color>
     <color name="grey_2">#BEC3BC</color>
     <color name="blue">#49A8DE</color>
+    <color name="blueOn">#FF6383C9</color>
+    <color name="blueOff">#FF9DB1DD</color>
+    <color name="redOn">#FFD1515E</color>
+    <color name="redOff">#FFE18F97</color>
+    <color name="greenOn">#FF5AC47C</color>
+    <color name="greenOff">#FF94D9AA</color>
 
 </resources>

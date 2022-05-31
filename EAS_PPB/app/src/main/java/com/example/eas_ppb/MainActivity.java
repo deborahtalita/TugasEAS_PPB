@@ -1,9 +1,11 @@
 package com.example.eas_ppb;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -18,6 +20,7 @@ import android.widget.PopupMenu;
 import com.example.eas_ppb.activities.FavoritesActivity;
 import android.widget.Toast;
 
+import com.example.eas_ppb.activities.SetNotificationActivity;
 import com.example.eas_ppb.adapter.Adapter;
 import com.example.eas_ppb.api.JsonPlaceHolderApi;
 import com.example.eas_ppb.api.RestClient;
@@ -62,9 +65,14 @@ public class MainActivity extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
+                        Intent intent;
                         switch (menuItem.getItemId()) {
+                            case R.id.setNotification:
+                                intent = new Intent(MainActivity.this, SetNotificationActivity.class);
+                                startActivity(intent);
+                                return true;
                             case R.id.favoritesMenu:
-                                Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
+                                intent = new Intent(MainActivity.this, FavoritesActivity.class);
                                 startActivity(intent);
                                 return true;
                             default:

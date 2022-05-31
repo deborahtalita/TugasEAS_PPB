@@ -1,14 +1,17 @@
 package com.example.eas_ppb.activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.eas_ppb.adapter.Adapter;
 import com.example.eas_ppb.viewmodel.FavoritesViewModel;
@@ -42,7 +45,20 @@ public class FavoritesActivity extends AppCompatActivity {
                 favAdapter.setMenus(menus);
             }
         });
-        }
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                mFavViewModel.delete(favAdapter.getMenuAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getApplicationContext(),"Menu deleted from favorites!", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(menuList);
+    }
 
     private void buildRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
