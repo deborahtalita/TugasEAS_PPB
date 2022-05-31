@@ -33,4 +33,10 @@ public class FavoritesRepository {
             mMenuDao.insert(menu);
         });
     }
+
+    public void delete(Menu menu) {
+        FavoritesRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mMenuDao.delete(menu);
+        });
+    }
 }

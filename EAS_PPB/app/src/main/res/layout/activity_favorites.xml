@@ -19,14 +19,14 @@
         android:fontFamily="@font/nunito_bold"/>
 
     <ImageButton
-        android:id="@+id/imagebutton_BackMenuDetail"
+        android:id="@+id/imagebutton_BackNotification"
         android:layout_width="29dp"
         android:layout_height="29dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_gravity="top|left"
         android:background="@null"
-        android:src="@drawable/ic_left_arrow_dark"/>
+        android:src="@drawable/ic_left_arrow_light_orange"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_FavList"

@@ -44,6 +44,7 @@
             android:background="@drawable/input_box"
             android:ems="10"
             android:inputType="textPersonName"
+            android:hint="yourname"
             android:textColor="@color/black"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -76,6 +77,7 @@
             android:ems="10"
             android:textColor="@color/black"
             android:inputType="textPersonName"
+            android:hint="name@example.com"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
 
@@ -107,6 +109,7 @@
             android:ems="10"
             android:textColor="@color/black"
             android:inputType="textPersonName"
+            android:hint="Enter your phone number"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
 
@@ -138,6 +141,7 @@
             android:ems="10"
             android:textColor="@color/black"
             android:inputType="textPassword"
+            android:hint="At least 6 characters"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
 
@@ -168,6 +172,7 @@
             android:ems="10"
             android:textColor="@color/black"
             android:inputType="textPassword"
+            android:hint="At least 6 characters"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
 

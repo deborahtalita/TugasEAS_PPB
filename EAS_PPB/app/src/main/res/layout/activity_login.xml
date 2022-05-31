@@ -44,6 +44,7 @@
             android:background="@drawable/input_box"
             android:ems="10"
             android:inputType="textPersonName"
+            android:hint="Enter your username"
             android:textColor="@color/black"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -70,17 +71,6 @@
                 android:textColor="@color/black"
                 android:textSize="13dp" />
 
-            <TextView
-                android:id="@+id/tvForgotPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="165dp"
-                android:fontFamily="@font/nunito_semibold"
-                android:layout_toRightOf="@+id/tvPassword"
-                android:text="Forgot Password?"
-                android:textColor="@color/grey_2"
-                android:textSize="13dp" />
-
         </RelativeLayout>
 
         <EditText
@@ -92,6 +82,7 @@
             android:ems="10"
             android:textColor="@color/black"
             android:inputType="textPassword"
+            android:hint="Choose Password"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
 

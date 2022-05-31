@@ -4,14 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/drawable/box_splash.xml" value="0.184" />
+        <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/drawable/ic_favorite_false.xml" value="0.117" />
+        <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/drawable/ic_favorite_true.xml" value="0.117" />
+        <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/drawable/ic_launcher_background.xml" value="0.117" />
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/drawable/ic_left_arrow.xml" value="0.184" />
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/drawable/ic_left_arrow_dark.xml" value="0.184" />
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/drawable/white_box.xml" value="0.184" />
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/drawable/yellow_box.xml" value="0.184" />
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/font/font.xml" value="0.20572916666666666" />
-        <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/layout/activity_favorites.xml" value="0.5" />
+        <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/layout/activity_favorites.xml" value="0.3481404958677686" />
+        <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/layout/activity_login.xml" value="0.3333333333333333" />
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/layout/activity_menu_detail.xml" value="0.4466666666666667" />
+        <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/layout/activity_register.xml" value="0.16666666666666666" />
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/layout/activity_splash.xml" value="0.22" />
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/layout/cardview_menu.xml" value="0.14780701754385964" />
         <entry key="..\:/Kuliah/Semester 4/PPB (PR)/TugasEAS_PPB/EAS_PPB/app/src/main/res/menu/more_option.xml" value="0.1" />

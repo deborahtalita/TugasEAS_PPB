@@ -34,12 +34,6 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
 
-//        SessionManager session = new SessionManager(this);
-//        if(session.isLogin()){
-//            Intent in = new Intent(SplashActivity.this, MainActivity.class);
-//            Log.i("response","bisa");
-//        }
-
         sharedPreferencesLoginStatus = this.getSharedPreferences(SHARED_LOGIN_STATUS, Context.MODE_PRIVATE);
 
         loginBtn = findViewById(R.id.cLoginBtn);

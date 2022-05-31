@@ -30,4 +30,8 @@ public class FavoritesViewModel extends AndroidViewModel {
     public void insert(Menu menu) {
         mRepository.insert(menu);
     }
+
+    public void delete(Menu menu) {
+        mRepository.delete(menu);
+    }
 }

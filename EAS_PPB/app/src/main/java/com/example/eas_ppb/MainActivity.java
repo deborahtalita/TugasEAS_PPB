@@ -21,7 +21,7 @@ import android.widget.PopupMenu;
 
 import com.example.eas_ppb.activities.FavoritesActivity;
 import android.widget.Toast;
-
+import com.example.eas_ppb.activities.SetNotificationActivity;
 import com.example.eas_ppb.activities.SplashActivity;
 import com.example.eas_ppb.adapter.Adapter;
 import com.example.eas_ppb.api.JsonPlaceHolderApi;
@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         Intent intent = null;
                         switch (menuItem.getItemId()) {
+                            case R.id.setNotification:
+                                intent = new Intent(MainActivity.this, SetNotificationActivity.class);
+                                startActivity(intent);
+                                return true;
                             case R.id.favoritesMenu:
                                 intent = new Intent(MainActivity.this, FavoritesActivity.class);
                                 startActivity(intent);

@@ -1,9 +1,11 @@
 package com.example.eas_ppb.activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +13,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.eas_ppb.MainActivity;
 import com.example.eas_ppb.adapter.Adapter;
 import com.example.eas_ppb.viewmodel.FavoritesViewModel;
 import com.example.eas_ppb.R;
@@ -35,7 +39,7 @@ public class FavoritesActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         menuList = findViewById(R.id.recyclerview_FavList);
-        backMenuDetail = findViewById(R.id.imagebutton_BackMenuDetail);
+        backMenuDetail = findViewById(R.id.imagebutton_BackNotification);
         mFavViewModel = new ViewModelProvider(this).get(FavoritesViewModel.class);
 
         buildRecyclerView();
@@ -50,9 +54,23 @@ public class FavoritesActivity extends AppCompatActivity {
         backMenuDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(FavoritesActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                mFavViewModel.delete(favAdapter.getMenuAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getApplicationContext(),"Menu deleted from favorites!", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(menuList);
     }
 
     private void buildRecyclerView() {

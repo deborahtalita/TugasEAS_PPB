@@ -2,6 +2,7 @@ package com.example.eas_ppb;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -16,6 +17,9 @@ public interface MenuDao {
     // conflict resolution strategy
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Menu menu);
+
+    @Delete
+    void delete(Menu menu);
 
     @Query("DELETE FROM menus_table")
     void deleteAll();
