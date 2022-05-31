@@ -20,13 +20,12 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
     private Context context;
-    private List<Menu> menus, filteredMenus;
+    private List<Menu> menus;
     private OnItemClickListener onItemClickListener;
 
     public Adapter(Context context, List<Menu> menus) {
         this.context = context;
         this.menus = menus;
-        this.filteredMenus = menus;
     }
 
     @NonNull

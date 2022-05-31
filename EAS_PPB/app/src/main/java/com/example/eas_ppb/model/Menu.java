@@ -48,11 +48,12 @@ public class Menu implements Parcelable {
 	@NonNull
 	private boolean isFavorite;
 
-	public Menu(@NonNull List<String> images, @NonNull String menuname, @NonNull String description, int V) {
+	public Menu(@NonNull List<String> images, @NonNull String menuname, @NonNull String description, int V, boolean isFavorite) {
 		this.images = images;
 		this.menuname = menuname;
 		this.description = description;
-		V = V;
+		this.V = V;
+		this.isFavorite = isFavorite;
 	}
 
 	protected Menu(Parcel in) {
@@ -62,6 +63,7 @@ public class Menu implements Parcelable {
 		this.menuname = in.readString();
 		this.description = in.readString();
 		this.V = in.readInt();
+		this.isFavorite = in.readByte() != 0;
 	}
 
 	public String getId(){
@@ -119,6 +121,7 @@ public class Menu implements Parcelable {
 		dest.writeString(menuname);
 		dest.writeString(description);
 		dest.writeInt(V);
+		dest.writeByte((byte) (isFavorite ? 1 : 0));
 	}
 
 	@Override

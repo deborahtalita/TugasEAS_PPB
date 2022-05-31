@@ -11,9 +11,7 @@ import com.example.eas_ppb.model.Menu;
 import java.util.List;
 
 public class FavoritesViewModel extends AndroidViewModel {
-
     private FavoritesRepository mRepository;
-
     private final LiveData<List<Menu>> mAllMenus;
 
     public FavoritesViewModel(@NonNull Application application) {

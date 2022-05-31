@@ -13,13 +13,13 @@ import androidx.lifecycle.ViewModel;
 import com.example.eas_ppb.api.response.GetAllMenuResponse;
 
 
-public class MenuViewModel extends AndroidViewModel {
+public class MenusViewModel extends AndroidViewModel {
 
     private LiveData<GetAllMenuResponse> liveData;
 
     private MenusRepository menusRepository;
 
-    public MenuViewModel(@NonNull Application application) {
+    public MenusViewModel(@NonNull Application application) {
         super(application);
         menusRepository = new MenusRepository(application);
         liveData = menusRepository.getAllMenuResponseMutableLiveData();

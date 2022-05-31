@@ -20,6 +20,6 @@ public interface MenuDao {
     @Query("DELETE FROM menus_table")
     void deleteAll();
 
-    @Query("SELECT * FROM menus_table ORDER BY menu_id ASC")
+    @Query("SELECT * FROM menus_table")
     LiveData<List<Menu>> getAlphabetizedMenus();
 }

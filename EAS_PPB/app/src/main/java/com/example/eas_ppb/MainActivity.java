@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton imagebutton_PopupMenu;
     private androidx.appcompat.widget.SearchView searchMenu;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private MenuViewModel viewModel;
+    private MenusViewModel viewModel;
     private RecyclerView menuList;
     private List<Menu> menus;
     private Adapter adapter;
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         setupSearchView();
         buildRecyclerView();
 
-        viewModel = new ViewModelProvider(this).get(MenuViewModel.class);
+        viewModel = new ViewModelProvider(this).get(MenusViewModel.class);
         viewModel.getMenusRepository().observe(this, new Observer<GetAllMenuResponse>() {
             @Override
             public void onChanged(GetAllMenuResponse getAllMenuResponse) {

@@ -72,9 +72,10 @@ public class MenuDetailActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-//                    menuIntent.setFavorite(true);
-//                    Intent in = new Intent(MenuDetailActivity.this, FavoritesActivity.class);
-//                    startActivityForResult(in,1);
+                    Intent in = new Intent(MenuDetailActivity.this, FavoritesActivity.class);
+                    menuIntent.setFavorite(true);
+                    mFavViewModel.insert(menuIntent);
+                    startActivity(in);
                     toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_favorite_true));
                 }
                 else {

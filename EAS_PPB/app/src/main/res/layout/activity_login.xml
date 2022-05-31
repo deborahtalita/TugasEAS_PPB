@@ -43,6 +43,7 @@
             android:layout_marginEnd="30dp"
             android:background="@drawable/input_box"
             android:ems="10"
+            android:hint="Enter your username"
             android:inputType="textPersonName"
             android:textColor="@color/black"
             android:paddingLeft="20dp"
@@ -74,12 +75,14 @@
                 android:id="@+id/tvForgotPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="165dp"
-                android:fontFamily="@font/nunito_semibold"
                 android:layout_toRightOf="@+id/tvPassword"
+                android:fontFamily="@font/nunito_semibold"
                 android:text="Forgot Password?"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/grey_2"
-                android:textSize="13dp" />
+                android:textSize="13dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="30dp"/>
 
         </RelativeLayout>
 
@@ -90,6 +93,7 @@
             android:layout_marginEnd="30dp"
             android:background="@drawable/input_box"
             android:ems="10"
+            android:hint="Choose password"
             android:textColor="@color/black"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
