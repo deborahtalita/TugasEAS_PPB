@@ -4,4 +4,6 @@
         android:title="Set Daily Notification"/>
     <item android:id="@+id/favoritesMenu"
         android:title="Favorites"/>
+    <item android:id="@+id/Logout"
+        android:title="Logout"/>
 </menu>

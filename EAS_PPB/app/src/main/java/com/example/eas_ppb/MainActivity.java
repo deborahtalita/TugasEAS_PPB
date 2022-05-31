@@ -1,6 +1,11 @@
 package com.example.eas_ppb;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
+=======
+import static com.example.eas_ppb.activities.LoginActivity.TEXT;
+
+>>>>>>> 0748195b69742e2155a8f5b5b5a5a7a538a4b087
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.Observer;
@@ -10,7 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +27,11 @@ import android.widget.PopupMenu;
 import com.example.eas_ppb.activities.FavoritesActivity;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.example.eas_ppb.activities.SetNotificationActivity;
+=======
+import com.example.eas_ppb.activities.SplashActivity;
+>>>>>>> 0748195b69742e2155a8f5b5b5a5a7a538a4b087
 import com.example.eas_ppb.adapter.Adapter;
 import com.example.eas_ppb.api.JsonPlaceHolderApi;
 import com.example.eas_ppb.api.RestClient;
@@ -45,12 +56,16 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView menuList;
     private List<Menu> menus;
     private Adapter adapter;
+    SharedPreferences sharedPreferencesLoginStatus;
+    public static final String SHARED_LOGIN_STATUS = "SharedLoginStatus";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
+        sharedPreferencesLoginStatus = getSharedPreferences(SHARED_LOGIN_STATUS, Context.MODE_PRIVATE);
 
         swipeRefreshLayout = findViewById(R.id.swiperefreshlayout_main);
         searchMenu = findViewById(R.id.searchview_SearchMenu);
@@ -65,7 +80,11 @@ public class MainActivity extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
+<<<<<<< HEAD
                         Intent intent;
+=======
+                        Intent intent = null;
+>>>>>>> 0748195b69742e2155a8f5b5b5a5a7a538a4b087
                         switch (menuItem.getItemId()) {
                             case R.id.setNotification:
                                 intent = new Intent(MainActivity.this, SetNotificationActivity.class);
@@ -73,6 +92,17 @@ public class MainActivity extends AppCompatActivity {
                                 return true;
                             case R.id.favoritesMenu:
                                 intent = new Intent(MainActivity.this, FavoritesActivity.class);
+<<<<<<< HEAD
+=======
+                                startActivity(intent);
+                                return true;
+                            case R.id.Logout:
+                                SharedPreferences.Editor editor = sharedPreferencesLoginStatus.edit();
+                                editor.putString(TEXT,"FALSE");
+                                editor.apply();
+
+                                intent = new Intent(MainActivity.this, SplashActivity.class);
+>>>>>>> 0748195b69742e2155a8f5b5b5a5a7a538a4b087
                                 startActivity(intent);
                                 return true;
                             default:

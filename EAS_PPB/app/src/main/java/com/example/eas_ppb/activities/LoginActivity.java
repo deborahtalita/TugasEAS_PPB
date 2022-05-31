@@ -2,6 +2,7 @@ package com.example.eas_ppb.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
 
-//        sharedPreferencesLoginStatus = this.getSharedPreferences(SHARED_LOGIN_STATUS, Context.MODE_PRIVATE);
+        sharedPreferencesLoginStatus = this.getSharedPreferences(SHARED_LOGIN_STATUS, Context.MODE_PRIVATE);
 
         edtUsername = findViewById(R.id.editUsername);
         edtPassword = findViewById(R.id.editPassword);
@@ -73,6 +74,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     // Status code : 200
                     Log.i("Response", response.message());
+                    SharedPreferences.Editor editor = sharedPreferencesLoginStatus.edit();
+                    editor.putString(TEXT,"TRUE");
+                    editor.apply();
+
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 } else {

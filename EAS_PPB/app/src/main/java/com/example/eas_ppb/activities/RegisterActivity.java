@@ -2,7 +2,9 @@ package com.example.eas_ppb.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,15 +25,21 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private SharedPreferences sharedPreferencesLoginStatus;
     EditText edtUsername, edtEmail, edtPhoneNumber, edtPassword, edtConfirmPassword;
     Button registerBtn;
     TextView tvChooseLogin;
+
+    public static final String SHARED_LOGIN_STATUS = "SharedLoginStatus";
+    public static final String TEXT = "FALSE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         getSupportActionBar().hide();
+
+        sharedPreferencesLoginStatus = this.getSharedPreferences(SHARED_LOGIN_STATUS, Context.MODE_PRIVATE);
 
         edtUsername = findViewById(R.id.editUsername);
         edtEmail = findViewById(R.id.editEmail);
@@ -89,6 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     // Status code : 200
                     Log.i("Response", response.message());
+                    SharedPreferences.Editor editor = sharedPreferencesLoginStatus.edit();
+                    editor.putString(TEXT,"TRUE");
+                    editor.apply();
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 } else {
