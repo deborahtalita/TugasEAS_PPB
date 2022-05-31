@@ -35,7 +35,7 @@ public class MenuDetailActivity extends AppCompatActivity {
     ImageSlider menuImageDetail;
     Menu menuIntent;
     FavoritesViewModel mFavViewModel;
-    ToggleButton toggleButton;
+    ToggleButton favButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +52,18 @@ public class MenuDetailActivity extends AppCompatActivity {
 
         menuIntent = getIntent().getParcelableExtra("MENU_DETAILS");
 
-        toggleButton = (ToggleButton) findViewById(R.id.myToggleButton);
-        toggleButton.setChecked(false);
+        favButton = (ToggleButton) findViewById(R.id.myToggleButton);
+        //favButton.setChecked(false);
+        if (menuIntent.isFavorite()){
+            Log.i("fav","yes");
+            favButton.setChecked(true);
+            favButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_favorite_true));
+        } else {
+            favButton.setChecked(false);
+            favButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_favorite_false));
+        }
 
-        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite_false));
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        favButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
@@ -65,10 +72,10 @@ public class MenuDetailActivity extends AppCompatActivity {
                     Intent in = new Intent(MenuDetailActivity.this, FavoritesActivity.class);
                     startActivity(in);
                     Toast.makeText(MenuDetailActivity.this,  "Added to Favorites!", Toast.LENGTH_SHORT).show();
-                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_favorite_true));
+                    favButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_favorite_true));
                 }
                 else {
-                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite_false));
+                    favButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite_false));
                 }
             }
         });

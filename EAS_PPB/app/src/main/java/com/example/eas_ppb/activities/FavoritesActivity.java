@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.eas_ppb.adapter.Adapter;
 import com.example.eas_ppb.viewmodel.FavoritesViewModel;
@@ -21,6 +23,7 @@ import java.util.List;
 public class FavoritesActivity extends AppCompatActivity {
 
     private RecyclerView menuList;
+    ImageButton backMenuDetail;
     private FavoritesViewModel mFavViewModel;
     private List<Menu> menus = new ArrayList<>();
     Adapter favAdapter;
@@ -32,6 +35,7 @@ public class FavoritesActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         menuList = findViewById(R.id.recyclerview_FavList);
+        backMenuDetail = findViewById(R.id.imagebutton_BackMenuDetail);
         mFavViewModel = new ViewModelProvider(this).get(FavoritesViewModel.class);
 
         buildRecyclerView();
@@ -42,7 +46,14 @@ public class FavoritesActivity extends AppCompatActivity {
                 favAdapter.setMenus(menus);
             }
         });
-        }
+
+        backMenuDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
 
     private void buildRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

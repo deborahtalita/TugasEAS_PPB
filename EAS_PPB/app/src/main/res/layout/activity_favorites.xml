@@ -18,6 +18,16 @@
         android:textColor="@color/light_orange"
         android:fontFamily="@font/nunito_bold"/>
 
+    <ImageButton
+        android:id="@+id/imagebutton_BackMenuDetail"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_gravity="top|left"
+        android:background="@null"
+        android:src="@drawable/ic_left_arrow_dark"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_FavList"
         android:layout_width="match_parent"
