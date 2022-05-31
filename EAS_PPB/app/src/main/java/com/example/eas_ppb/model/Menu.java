@@ -1,9 +1,11 @@
 package com.example.eas_ppb.model;
 
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -17,7 +19,8 @@ import java.util.List;
 public class Menu implements Parcelable {
 
 	@ColumnInfo(name = "menu_id")
-	@PrimaryKey(autoGenerate = true)
+	@PrimaryKey
+	@NonNull
 	@SerializedName("_id")
 	private String id;
 
@@ -41,11 +44,15 @@ public class Menu implements Parcelable {
 	@SerializedName("__v")
 	private int V;
 
-	public Menu(@NonNull List<String> images, @NonNull String menuname, @NonNull String description, int v) {
+	@ColumnInfo(name = "isFavorite")
+	@NonNull
+	private boolean isFavorite;
+
+	public Menu(@NonNull List<String> images, @NonNull String menuname, @NonNull String description, int V) {
 		this.images = images;
 		this.menuname = menuname;
 		this.description = description;
-		this.V = v;
+		V = V;
 	}
 
 	protected Menu(Parcel in) {
@@ -75,6 +82,34 @@ public class Menu implements Parcelable {
 
 	public int getV(){
 		return V;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setImages(@NonNull List<String> images) {
+		this.images = images;
+	}
+
+	public void setMenuname(@NonNull String menuname) {
+		this.menuname = menuname;
+	}
+
+	public void setDescription(@NonNull String description) {
+		this.description = description;
+	}
+
+	public void setV(int v) {
+		V = v;
+	}
+
+	public boolean isFavorite() {
+		return isFavorite;
+	}
+
+	public void setFavorite(boolean favorite) {
+		isFavorite = favorite;
 	}
 
 	@Override

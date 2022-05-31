@@ -5,7 +5,7 @@
     android:fitsSystemWindows="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splashscreen"
+    android:background="@drawable/splashscreen_background"
     android:orientation="vertical"
     tools:context=".activities.SplashActivity">
 
