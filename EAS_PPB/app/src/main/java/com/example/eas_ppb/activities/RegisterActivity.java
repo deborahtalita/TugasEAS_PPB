@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.eas_ppb.MainActivity;
 import com.example.eas_ppb.R;
 import com.example.eas_ppb.api.RestClient;
 import com.example.eas_ppb.api.request.BodyRegister;

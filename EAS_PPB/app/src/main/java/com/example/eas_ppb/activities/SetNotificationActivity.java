@@ -15,7 +15,7 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.eas_ppb.FirstRunJobService;
+import com.example.eas_ppb.jobscheduler.FirstRunJobService;
 import com.example.eas_ppb.R;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
@@ -26,7 +26,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class SetNotificationActivity extends AppCompatActivity {
-    private SharedPreferences sharedpreferences_NotificationTime;
+    private SharedPreferences sharedPreferencesNotificationTime;
     private Calendar currentTime, pickedTime, targetTime;
     private MaterialTimePicker materialTimePicker;
     private Button button1, button2, button3;
@@ -36,7 +36,7 @@ public class SetNotificationActivity extends AppCompatActivity {
     private TextView tvTargetTime;
     private DateFormat dateFormat;
 
-    public static final String SHARED_NOTIFICATiON_TIME = "SharedNotificationTime";
+    public static final String SHARED_NOTIFICATION_TIME = "SharedNotificationTime";
     public static final String TEXT = "-- : -- : --";
 
     @Override
@@ -45,7 +45,7 @@ public class SetNotificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_set_notification);
         getSupportActionBar().hide();
 
-        sharedpreferences_NotificationTime = getSharedPreferences(SHARED_NOTIFICATiON_TIME, MODE_PRIVATE);
+        sharedPreferencesNotificationTime = getSharedPreferences(SHARED_NOTIFICATION_TIME, MODE_PRIVATE);
         mScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         dateFormat = new SimpleDateFormat("HH : mm : ss");
         tcCurrentTime = findViewById(R.id.currentTime);
@@ -53,7 +53,7 @@ public class SetNotificationActivity extends AppCompatActivity {
         button1 = findViewById(R.id.selectTimeButton);
         button2 = findViewById(R.id.startButton);
         button3 = findViewById(R.id.stopButton);
-        backButton = findViewById(R.id.imagebutton_BackNotification);
+        backButton = findViewById(R.id.imagebutton_BackFav);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class SetNotificationActivity extends AppCompatActivity {
         });
 
         //set tampilan awal ketika membuka halaman
-        tvTargetTime.setText(sharedpreferences_NotificationTime.getString(TEXT, "-- : -- : --"));
+        tvTargetTime.setText(sharedPreferencesNotificationTime.getString(TEXT, "-- : -- : --"));
         if (!isScheduledJob()) {
             button1.setBackgroundColor(button1.getContext().getResources().getColor(R.color.blueOn));
             button2.setBackgroundColor(button2.getContext().getResources().getColor(R.color.greenOn));
@@ -181,7 +181,7 @@ public class SetNotificationActivity extends AppCompatActivity {
             targetTime.set(Calendar.MILLISECOND, 0);
         }
         tvTargetTime.setText(dateFormat.format(targetTime.getTime()));
-        sharedpreferences_NotificationTime.edit().putString(TEXT, tvTargetTime.getText().toString()).apply();
+        sharedPreferencesNotificationTime.edit().putString(TEXT, tvTargetTime.getText().toString()).apply();
 
         //jika waktu yang dipilih pada material time picker kurang dari sama dengan waktu terkini,
         //maka waktu ditambah 1 hari (24 jam)
@@ -211,7 +211,7 @@ public class SetNotificationActivity extends AppCompatActivity {
         mScheduler.cancelAll();
         pickedTime = null;
         tvTargetTime.setText("-- : -- : --");
-        sharedpreferences_NotificationTime.edit().putString(TEXT, tvTargetTime.getText().toString()).apply();
+        sharedPreferencesNotificationTime.edit().putString(TEXT, tvTargetTime.getText().toString()).apply();
 
         Log.i("DailyNotificationService", "jobCancelled");
     }

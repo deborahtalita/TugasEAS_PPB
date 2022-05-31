@@ -29,7 +29,7 @@
             android:name=".activities.MenuDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SplashActivity"
@@ -42,10 +42,10 @@
         </activity>
 
         <service
-            android:name=".NotificationJobService"
+            android:name=".jobscheduler.NotificationJobService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
-            android:name=".FirstRunJobService"
+            android:name=".jobscheduler.FirstRunJobService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 

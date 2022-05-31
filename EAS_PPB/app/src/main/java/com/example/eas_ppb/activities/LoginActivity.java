@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.eas_ppb.MainActivity;
 import com.example.eas_ppb.R;
 import com.example.eas_ppb.api.RestClient;
 import com.example.eas_ppb.api.request.BodyLogin;
@@ -24,7 +23,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-
 
     private SharedPreferences sharedPreferencesLoginStatus;
     EditText edtUsername, edtPassword;

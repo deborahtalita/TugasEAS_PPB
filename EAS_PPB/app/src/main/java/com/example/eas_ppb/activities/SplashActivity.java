@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 
-import com.example.eas_ppb.MainActivity;
 import com.example.eas_ppb.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 

@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.eas_ppb.MainActivity;
 import com.example.eas_ppb.adapter.Adapter;
 import com.example.eas_ppb.viewmodel.FavoritesViewModel;
 import com.example.eas_ppb.R;
@@ -27,7 +26,7 @@ import java.util.List;
 public class FavoritesActivity extends AppCompatActivity {
 
     private RecyclerView menuList;
-    ImageButton backMenuDetail;
+    ImageButton backMenuFav;
     private FavoritesViewModel mFavViewModel;
     private List<Menu> menus = new ArrayList<>();
     Adapter favAdapter;
@@ -39,7 +38,7 @@ public class FavoritesActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         menuList = findViewById(R.id.recyclerview_FavList);
-        backMenuDetail = findViewById(R.id.imagebutton_BackNotification);
+        backMenuFav = findViewById(R.id.imagebutton_BackFav);
         mFavViewModel = new ViewModelProvider(this).get(FavoritesViewModel.class);
 
         buildRecyclerView();
@@ -51,7 +50,7 @@ public class FavoritesActivity extends AppCompatActivity {
             }
         });
 
-        backMenuDetail.setOnClickListener(new View.OnClickListener() {
+        backMenuFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FavoritesActivity.this, MainActivity.class);
