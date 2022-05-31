@@ -1,5 +1,7 @@
 package com.example.eas_ppb;
 
+import static com.example.eas_ppb.activities.LoginActivity.TEXT;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.Observer;
@@ -8,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +22,7 @@ import android.widget.PopupMenu;
 import com.example.eas_ppb.activities.FavoritesActivity;
 import android.widget.Toast;
 
+import com.example.eas_ppb.activities.SplashActivity;
 import com.example.eas_ppb.adapter.Adapter;
 import com.example.eas_ppb.api.JsonPlaceHolderApi;
 import com.example.eas_ppb.api.RestClient;
@@ -42,12 +47,16 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView menuList;
     private List<Menu> menus;
     private Adapter adapter;
+    SharedPreferences sharedPreferencesLoginStatus;
+    public static final String SHARED_LOGIN_STATUS = "SharedLoginStatus";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
+        sharedPreferencesLoginStatus = getSharedPreferences(SHARED_LOGIN_STATUS, Context.MODE_PRIVATE);
 
         swipeRefreshLayout = findViewById(R.id.swiperefreshlayout_main);
         searchMenu = findViewById(R.id.searchview_SearchMenu);
@@ -62,9 +71,18 @@ public class MainActivity extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
+                        Intent intent = null;
                         switch (menuItem.getItemId()) {
                             case R.id.favoritesMenu:
-                                Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
+                                intent = new Intent(MainActivity.this, FavoritesActivity.class);
+                                startActivity(intent);
+                                return true;
+                            case R.id.Logout:
+                                SharedPreferences.Editor editor = sharedPreferencesLoginStatus.edit();
+                                editor.putString(TEXT,"FALSE");
+                                editor.apply();
+
+                                intent = new Intent(MainActivity.this, SplashActivity.class);
                                 startActivity(intent);
                                 return true;
                             default:
